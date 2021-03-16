@@ -9,19 +9,31 @@
       </p>
     </div>
     <div class="actions" v-if="isEditable">
-      <router-link
-        class="btn btn-secondary mb-2"
+      <button-link
+        class="mb-2"
+        color="secondary"
         :to="{ name: 'admin.post.edit', params: { slug: post.slug } }"
       >
         Editer
-      </router-link>
-      <button class="btn btn-danger">Supprimer</button>
+      </button-link>
+
+      <button-custom color="danger" @click="deletePost(post.slug)">
+        Supprimer
+      </button-custom>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import ButtonLink from "@/components/ButtonLink";
+import ButtonCustom from "@/components/ButtonCustom";
+
 export default {
+  components: {
+    ButtonLink,
+    ButtonCustom,
+  },
   props: {
     isEditable: {
       default: false,
@@ -29,6 +41,9 @@ export default {
     post: {
       default: {},
     },
+  },
+  methods: {
+    ...mapActions(["deletePost"]),
   },
 };
 </script>

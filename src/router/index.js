@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Blog from '@/views/Blog/Index'
-import BlogPostView from '@/views/Blog/PostView'
+import BlogPostShow from '@/views/Blog/Post/Show'
 import Admin from '@/views/Admin/Index'
-import AdminPostCreate from '@/views/Admin/PostCreate'
-import AdminPostEdit from '@/views/Admin/PostEdit'
-import Login from '@/views/Login'
+import AdminPostCreate from '@/views/Admin/Post/Create'
+import AdminPostEdit from '@/views/Admin/Post/Edit'
+import Login from '@/views/Auth/Login'
 
 const routes = [
   {
@@ -18,14 +18,14 @@ const routes = [
     component: Blog
   },
   {
-    path: '/admin/new',
+    path: '/admin/create',
     name: 'admin.post.create',
     component: AdminPostCreate
   },
   {
     path: '/blog/:slug',
-    name: 'blog.post.view',
-    component: BlogPostView
+    name: 'blog.post.show',
+    component: BlogPostShow
   },
   {
     path: '/admin',

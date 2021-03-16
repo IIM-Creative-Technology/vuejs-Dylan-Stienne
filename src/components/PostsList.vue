@@ -11,28 +11,28 @@
       class="mb-3"
     />
     <div class="row">
-      <button
+      <button-custom
         v-if="pageIndex > 1"
         @click="goToPreviousPage"
-        class="btn btn-link"
+        color="link"
       >
         &lt;
-      </button>
-      <button
+      </button-custom>
+      <button-custom
         v-for="page in pagesCount"
         :key="page"
         @click="goToPage(page)"
-        class="btn btn-link"
+        color="link"
       >
         {{ page }}
-      </button>
-      <button
+      </button-custom>
+      <button-custom
         v-if="pageIndex < pagesCount"
         @click="goToNextPage"
-        class="btn btn-link"
+        color="link"
       >
         &gt;
-      </button>
+      </button-custom>
     </div>
   </div>
 </template>
@@ -40,8 +40,13 @@
 <script>
 import PostCard from "@/components/PostCard";
 import { mapState } from "vuex";
+import ButtonCustom from "@/components/ButtonCustom";
 
 export default {
+  components: {
+    PostCard,
+    ButtonCustom,
+  },
   props: {
     isPostsEditable: {
       default: false,
@@ -71,9 +76,6 @@ export default {
     pagesCount() {
       return Math.ceil(this.posts.length / this.pageSize);
     },
-  },
-  components: {
-    PostCard,
   },
 };
 </script>

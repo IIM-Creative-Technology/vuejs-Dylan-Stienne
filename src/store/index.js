@@ -7,7 +7,8 @@ export default createStore({
       "slug": "post-1",
       "image_url": "https://via.placeholder.com/320x220/381353",
       "content": "Lorem lorem lorem ",
-      "created_at": "XXX",
+      "meta_title": "meta title post 1",
+      "meta_desc": "meta description post 1",
       "author": {
         "first_name": "Dylan",
         "last_name": "STIENNE",
@@ -19,7 +20,8 @@ export default createStore({
       "slug": "post-2",
       "image_url": "https://via.placeholder.com/320x220/381353",
       "content": "Lorem lorem lorem Lorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem lorem",
-      "created_at": "XXX",
+      "meta_title": "meta title post 2",
+      "meta_desc": "meta description post 2",
       "author": {
         "first_name": "Dylan",
         "last_name": "STIENNE",
@@ -31,7 +33,8 @@ export default createStore({
       "slug": "post-3",
       "image_url": "https://via.placeholder.com/320x220/381353",
       "content": "Lorem lorem lorem coucou.",
-      "created_at": "XXX",
+      "meta_title": "meta title post 3",
+      "meta_desc": "meta description post 3",
       "author": {
         "first_name": "Dylan",
         "last_name": "STIENNE",
@@ -43,7 +46,8 @@ export default createStore({
       "slug": "post-4",
       "image_url": "https://via.placeholder.com/320x220/381353",
       "content": "Lorem lorem lorem Lorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem lorem",
-      "created_at": "XXX",
+      "meta_title": "meta title post 4",
+      "meta_desc": "meta description post 4",
       "author": {
         "first_name": "Dylan",
         "last_name": "STIENNE",
@@ -55,7 +59,8 @@ export default createStore({
       "slug": "post-5",
       "image_url": "https://via.placeholder.com/320x220/381353",
       "content": "Lorem lorem lorem Lorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem loremLorem lorem lorem",
-      "created_at": "XXX",
+      "meta_title": "meta title post 5",
+      "meta_desc": "meta description post 5",
       "author": {
         "first_name": "Dylan",
         "last_name": "STIENNE",
@@ -68,13 +73,23 @@ export default createStore({
     ],
   },
   mutations: {
-    CREATE_ARTICLE(state, post) {
+    CREATE_POST(state, post) {
       state.posts.push(post);
+    },
+    DELETE_POST(state, slug) {
+      state.posts.splice(state.posts.findIndex(post => post.slug === slug), 1);
     }
   },
   actions: {
     createPost(context, post) {
-      context.commit('CREATE_ARTICLE', post);
+      context.commit('CREATE_POST', post);
+    },
+    updatePost(context, slug, post) {
+      context.commit('DELETE_POST', slug);
+      context.commit('CREATE_POST', post);
+    },
+    deletePost(context, slug) {
+      context.commit('DELETE_POST', slug);
     },
   },
   modules: {
