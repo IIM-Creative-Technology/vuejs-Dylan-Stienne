@@ -1,5 +1,17 @@
-<template>blog</template>
+<template>
+  <layout-app>
+    <posts-list />
+  </layout-app>
+</template>
 
 <script>
-export default {};
+import LayoutApp from "@/layouts/LayoutApp";
+import PostsList from "@/components/PostsList";
+
+export default {
+  components: {
+    LayoutApp,
+    PostsList,
+  },
+};
 </script>

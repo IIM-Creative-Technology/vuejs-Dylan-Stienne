@@ -6,7 +6,7 @@
       </button-link>
     </template>
 
-    <posts-list :isPostsEditable="true" />
+    <posts-list :isPostsEditable="true" :isPostsDeletable="true"/>
   </layout-app>
 </template>
 

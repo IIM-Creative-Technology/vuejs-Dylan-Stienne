@@ -7,10 +7,11 @@
       )"
       :key="index"
       :isEditable="isPostsEditable"
+      :isDeletable="isPostsDeletable"
       :post="post"
       class="mb-3"
     />
-    <div class="row">
+    <div class="row mb-3">
       <button-custom
         v-if="pageIndex > 1"
         @click="goToPreviousPage"
@@ -49,6 +50,9 @@ export default {
   },
   props: {
     isPostsEditable: {
+      default: false,
+    },
+    isPostsDeletable: {
       default: false,
     },
     pageSize: {

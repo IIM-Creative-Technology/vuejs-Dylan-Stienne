@@ -4,7 +4,6 @@ import BlogPostShow from '@/views/Blog/Post/Show'
 import Admin from '@/views/Admin/Index'
 import AdminPostCreate from '@/views/Admin/Post/Create'
 import AdminPostEdit from '@/views/Admin/Post/Edit'
-import Login from '@/views/Auth/Login'
 
 const routes = [
   {
@@ -36,11 +35,6 @@ const routes = [
     path: '/admin/:slug/edit',
     name: 'admin.post.edit',
     component: AdminPostEdit
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
   },
   {
     path: '/:pathMatch(.*)*',

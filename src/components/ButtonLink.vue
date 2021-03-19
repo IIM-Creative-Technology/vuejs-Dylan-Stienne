@@ -1,6 +1,6 @@
 <template>
   <router-link :to="to">
-    <button class="btn w-100" :class="getColorClass()">
+    <button class="btn w-100" :class="getColorClass()" style="">
       <slot />
     </button>
   </router-link>

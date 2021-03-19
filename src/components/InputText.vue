@@ -8,6 +8,9 @@
       type="text"
       class="form-control"
       :id="id"
+      :pattern="pattern"
+      :required="required"
+      :disabled="disabled"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
@@ -18,9 +21,12 @@
 export default {
   props: {
     modelValue: null,
+    pattern: null,
     label: null,
+    required: { default: false },
+    disabled: { default: false },
   },
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
   data() {
     return {
       id: Math.random()

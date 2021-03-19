@@ -4,6 +4,7 @@
     <textarea
       class="form-control"
       :id="id"
+      :required="required"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       rows="10"
@@ -16,6 +17,7 @@ export default {
   props: {
     modelValue: null,
     label: null,
+    required: { default: false },
   },
   emits: ["update:modelValue"],
   data() {

@@ -1,23 +1,35 @@
 <template>
-  <div class="post-card">
+  <div class="post-card rounded">
     <img class="img" :src="post.image_url" :alt="post.title" />
     <div class="content">
-      <h2>{{ post.title }}</h2>
+      <router-link
+        style="text-decoration: none"
+        class="bg-primary"
+        :to="{ name: 'blog.post.show', params: { slug: post.slug } }"
+      >
+        <h2 class="text-dark">{{ post.title }}</h2>
+      </router-link>
+
       <p>
-        {{ post.content.substring(0, 250) }}
-        <span v-if="post.content.length > 250">...</span>
+        {{ post.meta_desc.substring(0, 250) }}
+        <span v-if="post.meta_desc.length > 250">...</span>
       </p>
     </div>
-    <div class="actions" v-if="isEditable">
+    <div class="actions">
       <button-link
         class="mb-2"
         color="secondary"
+        v-if="isEditable"
         :to="{ name: 'admin.post.edit', params: { slug: post.slug } }"
       >
         Editer
       </button-link>
 
-      <button-custom color="danger" @click="deletePost(post.slug)">
+      <button-custom
+        v-if="isDeletable"
+        color="danger"
+        @click="deletePost(post.slug)"
+      >
         Supprimer
       </button-custom>
     </div>
@@ -36,6 +48,9 @@ export default {
   },
   props: {
     isEditable: {
+      default: false,
+    },
+    isDeletable: {
       default: false,
     },
     post: {
@@ -76,7 +91,7 @@ export default {
   .actions {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     height: 10rem;
     padding: 1rem;
   }
